@@ -120,12 +120,12 @@ blkparse -i sdd.blktrace.0 > output
 
 30秒定期的flush cache是由xfs文件系统下发的：
 
-![image](../image/sata_flush_cache.png)
+![image](https://github.com/wypx/dominance/blob/master/image/sata_flush_cache.png)
 
 
 另外，通过blktrace发现频繁发生问题的磁盘上存在大量非4K对齐的IO
 
-![image](../image/sata_unaligned_io_4k.png)
+![image](https://github.com/wypx/dominance/blob/master/image/sata_unaligned_io_4k.png)
 
 
 目前已确认问题原因是umonitor2频繁监控导致
