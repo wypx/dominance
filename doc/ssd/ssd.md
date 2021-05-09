@@ -1,4 +1,4 @@
-## smartctl
+## 1. smartctl
 
 ``command for: hdd ssd nvme``
 
@@ -6,6 +6,20 @@
 [Linux硬盘的检测--smartctl详细介绍](https://www.cnblogs.com/fiberhome/p/8275961.html)
 
 [硬盘监控和分析工具：Smartctl](https://linux.cn/article-4682-1.html?pr)
+
+问题记录:
+
+文件系统集群机械盘IO短暂blocked
+
+iostat显示util100%并且持续几秒无IO
+
+希捷通过协议分析仪得到的数据，认为存在两个可疑点：
+
+30秒定期的flush_cache指令
+频繁的identify指令
+
+选取有问题的sdd进行分析，以下是sdd的smart info
+
 
 ```sh
 [root@hn02-udisk-set2000-5 blktrace_sdd]# smartctl -a /dev/sdd
@@ -110,7 +124,7 @@ If Selective self-test is pending on power-up, resume after 0 minute delay.
 
 ```
 
-## blktrace
+## 2. blktrace
 
 ```sh
 blktrace -d /dev/sdd -w 60 -D /root/yyt/blktrace_sdd
@@ -131,7 +145,7 @@ blkparse -i sdd.blktrace.0 > output
 目前已确认问题原因是umonitor2频繁监控导致
 
 
-## list nvme
+## 3. list nvme
 ```
 [root@hb10-udisk-176-108 ~]# lspci |grep -i non  
 af:00.0 Non-Volatile memory controller: Beijing Memblaze Technology Co. Ltd. PBlaze5 910/916 (rev 02)
@@ -145,8 +159,8 @@ db:00.0 Non-Volatile memory controller: Beijing Memblaze Technology Co. Ltd. PBl
 [root@hb10-udisk-176-108 ~]# 
 ```
 
-## nvme-over-tcp
+## 4. nvme-over-tcp
 
 nvme discover -t rdma -a 10.189.149.77 -s 4420
 
-## nvme-over-rdma
+## 5. nvme-over-rdma
