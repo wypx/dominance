@@ -85,21 +85,35 @@ tar -jxvf abc.tar.bz2 # (记住’j’代表了.tar.bz2) 压缩的更好但是�
 
 ## awk的使用
 awk [-F field-separator] ‘commands’ input-file(s)
-1、找到当前文件夹下所有的文件和子文件夹,并显示文件大小
 
+1、找到当前文件夹下所有的文件和子文件夹,并显示文件大小
+```sh
 $ ls –l | awk ‘{print $5 “\t” $9}’
+```
+
 2、找到当前文件夹下所有的文件和子文件夹，并显示文件大小，并显示排序
+
+```sh
 > ls -l | awk ‘BEGIN {COUNT = -1; print “BEGIN COUNT”}
 {COUNT = COUNT + 1; print COUNT"\t"$5"\t"$9}
 END {print "END, COUNT = "COUNT}’
+```
+
 3、找到当前文件夹下所有的子文件夹,并显示排序
+```sh
 > ls -l | awk ‘BEGIN {print “BEGIN COUNT”} /4096/{print NR"\t"$5"\t"$9}
 END {print “END”}’
+```
 
 ## 得到一个文件的100到200行
+
+```sh
 sed -n ‘100,200p’ inputfile
+
 awk ‘NR>=100&&NR<=200{print}’ inputfile
+
 head -200 inputfile|tail -100
+```
 
 ## netstat tcpdump
 
@@ -123,7 +137,9 @@ tcpdump用于网络数据包的截获分析，例如三次握手，数据交换�
 tcpdump:
 
 https://www.cnblogs.com/ggjucheng/archive/2012/01/14/2322659.html
+
 https://www.linuxprobe.com/tcpdump-help-and.html
+
 https://www.runoob.com/linux/linux-comm-tcpdump.html
 
 监视指定网络接口的数据包
