@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+
+	<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Love is hugging</title>
+		<style type="text/css">
+			@font-face {
+				font-family: digit;
+				src: url("file/digital-7_mono.ttf") format("truetype");
+			}
+		</style>
+		<link rel="shortcut icon" type="image/x-icon" href="http://luotang.me/wp-content/uploads/2021/04/fingerprint46.png"/>
+		<link href="css/default.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/garden.js"></script>
+		<script type="text/javascript" src="js/functions.js"></script>
+		<!-- 页面点击小红心 -->
+		<script type="text/javascript" src="js/love.js"></script>
+		<!-- 雪花特效 -->
+		<script type="text/javascript">
+		  var windowWidth = $(window).width();
+		  if (windowWidth > 480) {
+		    document.write('<script type="text/javascript" src="js/snow.js"><\/script>');
+		  }			
+		</script>
+	</head>
+
+	<body>
+	<div id="mainDiv">
+		<div id="content" style="width: 1110px; height: 625px; margin-top: 10px; margin-left: 119.5px; ">
+			<div id="code" style="margin-top: 10.5px; ">
+				<span class="comments">/**</span><br />
+				<span class="space"/><span class="comments">* We met in hikvision, hangzhou,</span><br />
+				<span class="space"/><span class="comments">* our love born on the river of qiantang.</span><br />
+				<span class="space"/><span class="comments">*/</span><br />
+				Boy i = <span class="keyword">new</span> Boy(<span class="string">"Luotang"</span>);<br />
+				Girl u = <span class="keyword">new</span> Girl(<span class="string">"Airu"</span>);<br />
+				<span class="comments">// Mar 30, 2018, you told me you love me too. </span><br />
+				love.spark(); <br/>
+				<span class="comments">// Since then, I miss u every day.</span><br />
+				i.miss(u);<br/><br/>
+				
+				<span class="comments">> > > 虽然</span><br>
+				<span class="comments">> > > 和你在一起的时间不长,</span><br>
+                <span class="comments">> > > 我觉得，我已经不能自拔了,</span><br>
+				<span class="comments">> > > 这么多年,</span><br>
+				<span class="comments">> > > 我习惯了孤单习惯了一个人生活习惯了日日夜夜的思念,</span><br>
+				<span class="comments">> > > 在这么短的时间,却如同漫长的岁月，</span><br>
+				<span class="comments">> > > 你陪我走过了难忘的时光,</span><br>
+			    <span class="comments"></span><br>
+				<span class="comments">> > > 难也找不到一个如你一样的女孩,</span><br>
+			    <span class="comments">> > > 独一无二无可替代,</span><br>
+                <span class="comments">  >> > > 回想漫步钱塘江的夜晚，微笑偷偷的爬上了我的脸,</span><br>
+                <span class="comments"> >> > > 才发现，原来我是多么在乎你的存在    </span><br>
+                <span class="comments"> >> > >  生活很多时候变成一种期待，牵着你走在街灯的夜色里，</span><br>
+                <span class="comments"></span><br>
+				<span class="comments">> > > 我找到了那种怦然心动的感觉,</span><br>
+				<span class="comments">> > > 潜意识告诉我，不想错过你,</span><br>
+				<span class="comments"></span><br>
+                <span class="comments">  > > > 你也有一样的心情，若你愿意的话  </span><br>
+				<span class="comments">> > > 我们一起牵手行走吧，行走在这纷繁的世界吧！</span><br>
+				<span class="comments"></span><br>
+				<span class="comments">> > >- love  is  hugging 
+  
+		</span></span></span>
+		</div>
+		
+			<div id="loveHeart">
+				<div align="center">
+				<audio id="bg-music" autoplay="autoplay" loop src="http://love.luotang.me/file/全世界失眠.mp3">not support audio</audio>
+				</div>
+				<canvas id="garden" width="670" height="585"></canvas>
+				<div id="words" style="position: absolute; top: 205px; left: 629px; ">
+					<div id="messages">
+						Airu, we have fallen in love for
+						<div id="elapseClock"><span class="digit"></span> days <span class="digit"></span> hours <span class="digit"></span> minutes <span class="digit"></span> seconds</div>
+					</div>
+					<div id="loveu">
+						Love you forever and ever.<br>
+						<div class="signature">- luotang</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="copyright"></div>
+	</div>
+	<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var together = new Date();
+		together.setFullYear(2018, 2, 30);
+		together.setHours(20);
+		together.setMinutes(0);
+		together.setSeconds(0);
+		together.setMilliseconds(0);
+		
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			document.body.appendChild(msg);
+			$("#code").css("display", "none")
+			$("#copyright").css("position", "absolute");
+			$("#copyright").css("bottom", "10px");
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				adjustWordsPosition();
+				startHeartAnimation();
+			}, 5000);
+
+			timeElapse(together);
+			setInterval(function () {
+				timeElapse(together);
+			}, 500);
+
+			adjustCodePosition();
+			$("#code").typewriter();
+		}
+	</script>
+	
+	<!-- iOS 为了节省用户流量，所以用autoplay="autoplay"的自动播放被拦截 -->
+	<!-- 加载微信的插件 -->
+	<!--
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+
+	<script type="text/javascript">
+	function IosAutoPlayAudio(){
+	     wx.config({
+        	    // 配置信息, 即使不正确也能使用 wx.ready
+	            debug: false,
+        	    appId: '',
+	            timestamp: 1,
+        	    nonceStr: '',
+	            signature: '',
+        	    jsApiList: []
+	        });
+	        wx.ready(function() {
+        	    var globalAudio=document.getElementById("audio_id");
+	            globalAudio.play();
+        	});
+	};
+	IosAutoPlayAudio();
+	</script>
+	-->
+	<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function () {
+	    function audioAutoPlay() {
+	        var audio = document.getElementById('bg-music');
+	            audio.play();
+        	document.addEventListener("WeixinJSBridgeReady", function () {
+	            audio.play();
+        	}, false);
+	    }
+	    audioAutoPlay();
+	});
+	</script>
+
+</body></html>
